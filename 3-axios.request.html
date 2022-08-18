@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <div class="btn-container">
+    <button style="width:120px; height:30px; line-height: 30px; color: white; text-align:center; background-color: orange;">发送GET</button>
+    <button style="width:120px; height:30px; line-height: 30px; color: white; text-align:center; background-color:#c00000;">发送POST</button>
+    <button style="width:120px; height:30px; line-height: 30px; color: white; text-align:center; background-color: green;">发送PUT</button>
+    <button style="width:120px; height:30px; line-height: 30px; color: white; text-align:center; background-color: pink;">发送DELETE</button>
+  </div>
+  <script>
+    const btn = document.querySelectorAll('button')
+    btn[0].onclick = function(){
+      axios.request({
+        method:"GET",
+        url:"http://localhost:3000/posts/1"
+      }).then(res => console.log(res))
+    }
+    btn[1].onclick = function(){
+      axios.post(
+        "http://127.0.0.1:3000/posts",
+        {
+          "title":"hello axios",
+          "author":"pan"
+        }
+      ).then(res => console.log(res))
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=\, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <div class="btn-container">
+    <button style="width:120px; height:30px; line-height: 30px; color: white; text-align:center; background-color:#c00000;">发送POST</button>
+    <button style="width:120px; height:30px; line-height: 30px; color: white; text-align:center; background-color: orange;">发送GET</button>
+    <button style="width:120px; height:30px; line-height: 30px; color: white; text-align:center; background-color: green;">发送PUT</button>
+    <button style="width:120px; height:30px; line-height: 30px; color: white; text-align:center; background-color: pink;">发送DELETE</button>
+  </div>
+  <script>
+    const btn = document.querySelectorAll('button')
+    btn[1].onclick = function(){
+      axios({
+        method:"GET",
+        url:"http://localhost:3000/comments/2"
+      }).then(res =>{
+        console.log(res)
+      })
+    }
+    btn[0].onclick = function(){
+      axios({
+        method:"POST",
+        url:"http://localhost:3000/posts",
+        data:{
+          title:"会当凌绝顶，一览众山小",
+          author:'杜甫'
+        }
+      }).then(res =>{
+        console.log(res)
+      })
+    }
+    btn[2].onclick = function(){
+      axios({
+        method:"PUT",
+        url:"http://localhost:3000/posts/2",
+        data:{
+          title:"会当凌绝顶，一览众山小",
+          author:'唐:杜甫'
+        }
+      }).then(res =>{
+        console.log(res)
+      })
+    }
+    btn[3].onclick = function(){
+      axios({
+        method:"DELETE",
+        url:"http://localhost:3000/posts/4"
+      }).then(res =>{
+        console.log(res)
+      })
+    }
+  </script>
+</body>
+</html>
